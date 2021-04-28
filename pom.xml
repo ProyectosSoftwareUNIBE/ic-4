@@ -8,7 +8,7 @@
     <artifactId>codigo-base</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>examen</name>
-    <description>codigo base</description>
+    <description>ejercicio de ic</description>
     <packaging>jar</packaging>
 
     <properties>
