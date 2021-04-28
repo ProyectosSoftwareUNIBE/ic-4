@@ -4,7 +4,7 @@ class Fracciones
     private int numerador;
     private int denominador;
 
-    public Fracciones(String dato)
+     public clase(String dato)
     {
         if(dato.contains("/"))
         {
@@ -19,19 +19,19 @@ class Fracciones
         }
     }
 
-    public Fracciones()
+    public clase()
     {
         this.numerador = 0;
         this.denominador = 1;
     }
 
-    public Fracciones(final int n)
+    public clase(final int n)
     {
         this.numerador = n;
         this.denominador = 1;
     }
 
-    public Fracciones(final int n, final int d)
+    public clase(final int n, final int d)
     {
         if(d==0)
         {
@@ -41,20 +41,20 @@ class Fracciones
         this.denominador = d;
     }
 
-    public Fracciones(Fracciones fr)
+    public clase(clase fr)
     {
         this.numerador = fr.numerador;
         this.denominador = fr.denominador;
     }
 
-    public static Fracciones suma(Fracciones f1, Fracciones f2)
+    public static clase suma(clase f1, clase f2)
     {
         int numerador, denominador;
 
         numerador =(f1.GetNumerador() * f2.GetDenominador()) + (f2.GetNumerador() * f1.GetDenominador());
         denominador = f1.GetDenominador()*f2.GetDenominador();
 
-        Fracciones nuevaFr =  new Fracciones(numerador, denominador);
+        clase nuevaFr =  new clase(numerador, denominador);
         nuevaFr.simpli();
         return nuevaFr;
     }
@@ -67,7 +67,7 @@ class Fracciones
         numerador = (f1.GetNumerador() * f2.GetDenominador()) - (f2.GetNumerador() * f1.GetDenominador());
         denominador = f1.GetDenominador() * f2.GetDenominador();
 
-        Fracciones nuevaFr = new Fracciones(numerador, denominador);
+        clase nuevaFr = new clase(numerador, denominador);
         nuevaFr.simpli();
         return nuevaFr;
     }
@@ -121,7 +121,7 @@ class Fracciones
    
     public Fracciones Abs()
     {
-        return new Fracciones(Math.abs(numerador)/Math.abs(denominador));
+        return new clase(Math.abs(numerador)/Math.abs(denominador));
     }
 
     public void printf()
