@@ -13,6 +13,7 @@ class Fracciones
 
     public Fracciones(String dato)
     {
+        
         if(dato.contains("/"))
         {
             //entra cuando hay un slash en el string
