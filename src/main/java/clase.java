@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 
 class Fracciones
 {
@@ -66,18 +59,6 @@ class Fracciones
         return nuevaFr;
     }
 
-    public static Fracciones suma(Fracciones[] f1)
-    {
-        Fracciones fraccion;
-        fraccion = Fracciones.suma(f1[0], f1[1]);
-
-        for(int i=2; i<f1.length; i++)
-        {
-            fraccion = Fracciones.suma(fraccion, f1[i]);
-        }
-        fraccion.simpli();
-        return fraccion;
-    }
 
     public static Fracciones resta(Fracciones f1, Fracciones f2)
     {
@@ -91,20 +72,6 @@ class Fracciones
         return nuevaFr;
     }
 
-    public static Fracciones resta(Fracciones[] f1)
-    {
-        Fracciones resta;
-        resta = f1[0];
-
-        for(int i=1; i<f1.length; i++)
-        {
-            resta = Fracciones.resta(resta, f1[i]);
-        }
-        resta.simpli();
-        return resta;
-    }
-
-
 
     public void simpli()
     {
@@ -114,10 +81,6 @@ class Fracciones
         this.denominador = sp[1];
     }
 
-    public void simpli(Fracciones fr)
-    {
-        this.simpli(fr.GetNumerador(), fr.GetDenominador());
-    }
 
     public int[] simpli(int numerador, int denominador)
     {
@@ -155,19 +118,7 @@ class Fracciones
         return result;
     }
 
-    public static Fracciones[][] convertir(int tamCols, int tamRows, int[][] mtz)
-    {
-        Fracciones[][] nuevaMatriz = new Fracciones[tamCols][tamRows];
-        for(int rows=0; rows<mtz.length; rows++)
-        {
-            for(int cols=0; cols<mtz[rows].length; cols++)
-            {
-                nuevaMatriz[rows][cols] = new Fracciones(mtz[rows][cols]);
-            }
-        }
-        return nuevaMatriz;
-    }
-
+   
     public Fracciones Abs()
     {
         return new Fracciones(Math.abs(numerador)/Math.abs(denominador));
