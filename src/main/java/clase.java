@@ -1,11 +1,19 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 
 class Fracciones
 {
     private int numerador;
     private int denominador;
 
-     public clase(String dato)
+    public Fracciones(String dato)
     {
+        
         if(dato.contains("/"))
         {
             //entra cuando hay un slash en el string
@@ -19,19 +27,19 @@ class Fracciones
         }
     }
 
-    public clase()
+    public Fracciones()
     {
         this.numerador = 0;
         this.denominador = 1;
     }
 
-    public clase(final int n)
+    public Fracciones(final int n)
     {
         this.numerador = n;
         this.denominador = 1;
     }
 
-    public clase(final int n, final int d)
+    public Fracciones(final int n, final int d)
     {
         if(d==0)
         {
@@ -41,24 +49,36 @@ class Fracciones
         this.denominador = d;
     }
 
-    public clase(clase fr)
+    public Fracciones(Fracciones fr)
     {
         this.numerador = fr.numerador;
         this.denominador = fr.denominador;
     }
 
-    public static clase suma(clase f1, clase f2)
+    public static Fracciones suma(Fracciones f1, Fracciones f2)
     {
         int numerador, denominador;
 
         numerador =(f1.GetNumerador() * f2.GetDenominador()) + (f2.GetNumerador() * f1.GetDenominador());
         denominador = f1.GetDenominador()*f2.GetDenominador();
 
-        clase nuevaFr =  new clase(numerador, denominador);
+        Fracciones nuevaFr =  new Fracciones(numerador, denominador);
         nuevaFr.simpli();
         return nuevaFr;
     }
 
+    public static Fracciones suma(Fracciones[] f1)
+    {
+        Fracciones fraccion;
+        fraccion = Fracciones.suma(f1[0], f1[1]);
+
+        for(int i=2; i<f1.length; i++)
+        {
+            fraccion = Fracciones.suma(fraccion, f1[i]);
+        }
+        fraccion.simpli();
+        return fraccion;
+    }
 
     public static Fracciones resta(Fracciones f1, Fracciones f2)
     {
@@ -67,10 +87,24 @@ class Fracciones
         numerador = (f1.GetNumerador() * f2.GetDenominador()) - (f2.GetNumerador() * f1.GetDenominador());
         denominador = f1.GetDenominador() * f2.GetDenominador();
 
-        clase nuevaFr = new clase(numerador, denominador);
+        Fracciones nuevaFr = new Fracciones(numerador, denominador);
         nuevaFr.simpli();
         return nuevaFr;
     }
+
+    public static Fracciones resta(Fracciones[] f1)
+    {
+        Fracciones resta;
+        resta = f1[0];
+
+        for(int i=1; i<f1.length; i++)
+        {
+            resta = Fracciones.resta(resta, f1[i]);
+        }
+        resta.simpli();
+        return resta;
+    }
+
 
 
     public void simpli()
@@ -81,6 +115,10 @@ class Fracciones
         this.denominador = sp[1];
     }
 
+    public void simpli(Fracciones fr)
+    {
+        this.simpli(fr.GetNumerador(), fr.GetDenominador());
+    }
 
     public int[] simpli(int numerador, int denominador)
     {
@@ -118,10 +156,22 @@ class Fracciones
         return result;
     }
 
-   
+    public static Fracciones[][] convertir(int tamCols, int tamRows, int[][] mtz)
+    {
+        Fracciones[][] nuevaMatriz = new Fracciones[tamCols][tamRows];
+        for(int rows=0; rows<mtz.length; rows++)
+        {
+            for(int cols=0; cols<mtz[rows].length; cols++)
+            {
+                nuevaMatriz[rows][cols] = new Fracciones(mtz[rows][cols]);
+            }
+        }
+        return nuevaMatriz;
+    }
+
     public Fracciones Abs()
     {
-        return new clase(Math.abs(numerador)/Math.abs(denominador));
+        return new Fracciones(Math.abs(numerador)/Math.abs(denominador));
     }
 
     public void printf()
