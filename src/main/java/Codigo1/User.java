@@ -1,7 +1,11 @@
 package Codigo1;
 
 public class User {
+<<<<<<< HEAD
     private String name, familyname;
+=======
+    private String name, familyname, asdasd  ;
+>>>>>>> develop
 
     public User(String name, String familyname) {
         this.name = name;
