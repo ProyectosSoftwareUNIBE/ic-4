@@ -16,7 +16,7 @@ class Fracciones
         
         if(dato.contains("/"))
         {
-            //entra cuando hay un slash en el string ddd
+            //entra cuando hay un slash en el string dddddd
             this.numerador = Integer.parseInt(dato.substring(0,dato.indexOf("/")));
             this.denominador = Integer.parseInt(dato.substring(dato.indexOf("/")+1));
         }
